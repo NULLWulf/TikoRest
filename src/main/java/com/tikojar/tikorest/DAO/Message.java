@@ -6,7 +6,6 @@ Nathan Wolf
 
 package com.tikojar.tikorest.DAO;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.apache.commons.lang3.RandomStringUtils;
 import java.time.LocalDate;
 
@@ -25,6 +24,13 @@ public class Message {
         this.datePosted = LocalDate.now().toString(); // Gets server time and conver to String for easy database store
         this.messageContent = messageContent;
         this.messageId = RandomStringUtils.randomAlphanumeric(10);  // Unique message id to perform things like deletes etc.
+    }
+
+    public Message(String userID, String messageContent, String messageId) {
+        this.userID = userID;
+        this.datePosted = LocalDate.now().toString(); // Gets server time and conver to String for easy database store
+        this.messageContent = messageContent;
+        this.messageId = messageId;  // Unique message id to perform things like deletes etc.
     }
 
     public String getUserID() {
@@ -51,9 +57,11 @@ public class Message {
         this.messageContent = messageContent;
     }
 
-    public String getMessageId() { return messageId;}
+    public String getMessageId() { return this.messageId;}
 
     public void setMessageId(String messageId) { this.messageId = messageId;}
+
+
 
     @Override
     public String toString() {

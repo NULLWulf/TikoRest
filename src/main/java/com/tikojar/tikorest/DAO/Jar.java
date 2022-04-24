@@ -9,8 +9,9 @@ package com.tikojar.tikorest.DAO;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 
 @Document(collection = "TestJars")
 public class Jar {
@@ -19,8 +20,8 @@ public class Jar {
     public String id;
 
     String serverID;
-    private OpeningCondition openingCondition;
-    private ArrayList<Message> messages;
+    OpeningCondition openingCondition;
+    ArrayList<Message> messages;
 
     public Jar(){}  // Empty constructor needed for Jackson
 
@@ -59,6 +60,10 @@ public class Jar {
 
     public void addMessage(Message message){
         this.messages.add(message);
+    }
+
+    public void removeMessageById(String messageId){
+        messages.removeIf(m-> Objects.equals(m.getMessageId(), messageId));
     }
 
     @Override
