@@ -10,7 +10,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.apache.commons.lang3.RandomStringUtils;
 import java.time.LocalDate;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
 public class Message {
 
     private String userID;
@@ -55,4 +54,14 @@ public class Message {
     public String getMessageId() { return messageId;}
 
     public void setMessageId(String messageId) { this.messageId = messageId;}
+
+    @Override
+    public String toString() {
+        return "Message{" +
+                "userID='" + userID + '\'' +
+                ", datePosted='" + datePosted + '\'' +
+                ", messageContent='" + messageContent + '\'' +
+                ", messageId='" + messageId + '\'' +
+                '}';
+    }
 }

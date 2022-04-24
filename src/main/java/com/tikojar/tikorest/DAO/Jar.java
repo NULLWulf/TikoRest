@@ -9,9 +9,10 @@ package com.tikojar.tikorest.DAO;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
-@Document(collection = "Jars")
+@Document(collection = "TestJars")
 public class Jar {
 
     @Id
@@ -54,5 +55,19 @@ public class Jar {
 
     public void setMessages(ArrayList<Message> messages) {
         this.messages = messages;
+    }
+
+    public void addMessage(Message message){
+        this.messages.add(message);
+    }
+
+    @Override
+    public String toString() {
+        return "Jar{" +
+                "id='" + id + '\'' +
+                ", serverID='" + serverID + '\'' +
+                ", openingCondition=" + openingCondition +
+                ", messages=" + messages +
+                '}';
     }
 }

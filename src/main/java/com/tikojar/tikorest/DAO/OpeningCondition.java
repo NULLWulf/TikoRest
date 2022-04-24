@@ -6,11 +6,8 @@ Nathan Wolf
 
 package com.tikojar.tikorest.DAO;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 import java.time.LocalDate;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
 public class OpeningCondition {
 
     private boolean hasMessageLimit;
@@ -68,5 +65,16 @@ public class OpeningCondition {
 
     public void setServerChannelID(String serverChannelID) {
         this.serverChannelID = serverChannelID;
+    }
+
+    @Override
+    public String toString() {
+        return "OpeningCondition{" +
+                "hasMessageLimit=" + hasMessageLimit +
+                ", messageLimit=" + messageLimit +
+                ", creationDate='" + creationDate + '\'' +
+                ", openingDate='" + openingDate + '\'' +
+                ", serverChannelID='" + serverChannelID + '\'' +
+                '}';
     }
 }
